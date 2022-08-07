@@ -22,7 +22,7 @@ class FileStorage:
     '''
 
     script_dir = os.path.dirname(__file__)
-    __file_path = os.path.join(script_dir, 'file.json')
+    __file_path = 'file.json'
     __objects = {}
 
     def all(self):
