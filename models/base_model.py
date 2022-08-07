@@ -29,6 +29,7 @@ class BaseModel:
         else:
             self.id = myuuid
             self.created_at = current_time
+            self.updated_at = datetime.now()
             storage.new(self)
 
     def __str__(self):
@@ -44,7 +45,7 @@ class BaseModel:
     def to_dict(self):
         '''returns a dictionary containing all keys/values of __dict__ of
         the instance'''
-        my_dictionary = self.__dict__
+        my_dictionary = self.__dict__.copy()
         my_dictionary['created_at'] = datetime.now().isoformat()
         my_dictionary['updated_at'] = datetime.now().isoformat()
         my_dictionary['__class__'] = type(self).__name__
