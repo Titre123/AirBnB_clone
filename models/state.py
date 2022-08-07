@@ -1,19 +1,16 @@
 #!/usr/bin/python3
-''' module - place
-This is the place model for my application'''
+''' module - state
+This is the state model for my application'''
 
 
 from base_model import BaseModel
 
 
-class Review(BaseModel):
+class State(BaseModel):
     '''
     BaseModel Inherited
     Public class attributes:
-        - place_id
-        - user_id
-        - text
+        - name
     '''
-    place_id = ""
-    user_id = ""
-    text = ""
+    name = ""
+
