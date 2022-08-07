@@ -19,18 +19,27 @@ class BaseModel:
         - save
         - to_dict
     '''
-    def __init__(self):
+
+    def __init__(self, *args, **kwargs):
         '''Instantiate instance attributes'''
-        self.id = myuuid
-        self.created_at = current_time
-        self.updated_at = current_time    
+        if kwargs:
+            del(kwargs['__class__'])
+            for (key, value) in kwargs.items():
+                self.__setattr__(key, value)
+        else:
+            self.id = myuuid
+            self.created_at = current_time
+            storage.new(self)
+
     def __str__(self):
         '''string representation of an instance of the class'''
-        return f"[{type(self).__name__}] ({self.id}) <{self.__dict__}>"
+        return f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
+
     def save(self):
         '''updates the public instance attribute updated_at with the
         current datetime'''
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         '''returns a dictionary containing all keys/values of __dict__ of
