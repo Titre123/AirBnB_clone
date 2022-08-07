@@ -71,4 +71,4 @@ class FileStorage:
             'Review': Review,
             'State': State
         }
-        return 
+        return classes
