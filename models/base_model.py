@@ -35,7 +35,6 @@ class BaseModel:
         else:
             self.id = myuuid
             self.created_at = current_time
-            self.updated_at = datetime.now()
             storage.new(self)
 
     def __str__(self):
