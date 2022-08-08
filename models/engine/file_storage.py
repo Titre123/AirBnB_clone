@@ -50,8 +50,9 @@ class FileStorage:
         """Deserializes JSON file into __objects."""
         if not os.path.isfile(FileStorage.__file_path):
             return
-        with open(FileStorage.__file_path, "r") as f:
-           dict = json.load(f)
-           dict = {key: self.classes()[value["__class__"]](**v)
-                        for key, value in dict.items()}
-            FileStorage.__objects = dict
+        with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
+            obj_dict = json.load(f)
+            obj_dict = {k: self.classes()[v["__class__"]](**v)
+                        for k, v in obj_dict.items()}
+            # TODO: should this overwrite or insert?
+            FileStorage.__objects = obj_dict
