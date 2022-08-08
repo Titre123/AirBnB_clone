@@ -25,9 +25,9 @@ class BaseModel:
             for (key, value) in kwargs.items():
                 self.__setattr__(key, value)
         else:
-            self.id = myuuid
-            self.created_at = str(uuid.uuid4())
-            storage.new(self) = datetime.now())
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now())
+            storage.new(self)
 
     def __str__(self):
         '''string representation of an instance of the class'''
