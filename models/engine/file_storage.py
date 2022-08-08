@@ -8,11 +8,12 @@ import os
 class FileStorage:
 
     """Class for serializtion and deserialization of base classes."""
-    __file_path = "file.json"
+    script_dir = os.path.dirname(__file__)
+    __file_path = os.path.join(script_dir, "file.json")
     __objects = {}
 
     def all(self):
-        # TODO: should this be a copy()?
+        ''' return FileStorage.__objects '''
         return FileStorage.__objects
 
     def new(self, obj):
