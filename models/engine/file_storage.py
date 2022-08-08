@@ -1,14 +1,16 @@
 #!/usr/bin/python3
 """Module for FileStorage class."""
+
+
 import datetime
 import json
 import os
+script_dir = os.path.dirname(__file__)
 
 
 class FileStorage:
 
     """Class for serializtion and deserialization of base classes."""
-    script_dir = os.path.dirname(__file__)
     __file_path = os.path.join(script_dir, "file.json")
     __objects = {}
 
@@ -56,4 +58,5 @@ class FileStorage:
             obj_dict = {k: self.classes()[v["__class__"]](**v)
                         for k, v in obj_dict.items()}
             # TODO: should this overwrite or insert?
-            FileStorage.__objects = obj_dict
+            FileStorage.__objects.clear()
+            FileStorage.__objects.update(obj_dict)
