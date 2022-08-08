@@ -6,8 +6,6 @@ This is the base model for my application'''
 import uuid
 from datetime import datetime
 from models import storage
-myuuid = str(uuid.uuid4())
-current_time = (datetime.now())
 
 
 class BaseModel:
@@ -28,8 +26,8 @@ class BaseModel:
                 self.__setattr__(key, value)
         else:
             self.id = myuuid
-            self.created_at = current_time
-            storage.new(self)
+            self.created_at = str(uuid.uuid4())
+            storage.new(self) = datetime.now())
 
     def __str__(self):
         '''string representation of an instance of the class'''
