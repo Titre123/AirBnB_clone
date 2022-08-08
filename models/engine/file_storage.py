@@ -21,10 +21,10 @@ class FileStorage:
         FileStorage.__objects.update({key: obj})
 
     def save(self):
-        '''serializes __objects to the JSON file (path)'''
-        json_format = json.dumps(d = {k: v.to_dict() for k, v in FileStorage.__objects.items()})
-        with open(FileStorage.__file_path, 'w') as f:
-            f.write(json_format)
+        """Serialzes __objects to JSON file."""
+        with open(FileStorage.__file_path, "w", encoding="utf-8") as f:
+            d = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
+            json.dump(d, f)
 
     def classes(self):
         from models.base_model import BaseModel
